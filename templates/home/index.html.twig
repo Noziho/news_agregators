@@ -1,7 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}News{% endblock %}
 
 {% block body %}
-    <h1>Sa marche</h1>
+    <h1>News: </h1>
+    <ul>
+        <li><a href="/">General news</a></li>
+        <li><a href="/bitcoin">Bitcoin news</a></li>
+        <li><a href="/apple">Apple news</a></li>
+    </ul>
+    <div id="articles_container">
+        {% if articles is defined %}
+            {{ dump(articles) }}
+            {% for article in articles.articles %}
+                <div class="article">
+                    <h1>{{ article.title }}</h1>
+                    <p>{{ article.description }}</p>
+                    <img src="{{ article.urlToImage }}" alt="Article image">
+                    <a href="/currentArticle/{{ loop.index -1 }}">Voir article</a>
+                </div>
+            {% endfor %}
+        {% endif%}
+    </div>
 {% endblock %}
