@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}News{% endblock %}
+
+{% block body %}
+    <h1>News: </h1>
+    <div id="articles_container">
+        {% if articles is defined %}
+                <div class="article">
+                    <h1>{{ articles.articles[id].title }}</h1>
+                    <p>{{ articles.articles[id].description }}</p>
+                    <img src="{{ articles.articles[id].urlToImage }}" alt="Article image">
+                </div>
+        {% endif%}
+    </div>
+{% endblock %}
